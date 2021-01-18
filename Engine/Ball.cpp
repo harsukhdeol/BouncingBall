@@ -22,27 +22,27 @@ bool Ball::WallCollision(const Rect& wall)
 	const Rect circleRect = GetRect();
 
 	if (circleRect.left < wall.left) {
-		ReboundX();
 		pos.x += wall.left - circleRect.left;
+		ReboundX();
 		collided = true;
 	}
 	else if (circleRect.right > wall.right)
 	{
-		ReboundX();
 		pos.x += wall.right - circleRect.right;
+		ReboundX();
 		collided = true;
 	}
 
 	if (circleRect.top < wall.top)
 	{
-		ReboundY();
 		pos.y += wall.top - circleRect.top;
+		ReboundY();
 		collided = true;
 	}
 	else if (circleRect.bottom > wall.bottom)
 	{
+		pos.y += wall.bottom - circleRect.bottom;
 		ReboundY();
-		pos.y += wall.top - circleRect.top;
 		collided = true;
 	}
 	return collided;

@@ -6,14 +6,12 @@ Rect::Rect(float left_in, float right_in, float top_in, float bottom_in):
 {}
 
 Rect::Rect(const Vec2 & topleft, float width, float height)
-{
-	Rect(topleft, topleft+ Vec2(width, height));
-}
+	: Rect(topleft, topleft + Vec2(width, height))
+{}
 
 Rect::Rect(const Vec2& topleft, const Vec2& bottomright)
-{
-	Rect(topleft.x, bottomright.x, topleft.y, bottomright.y);
-}
+	: Rect(topleft.x, bottomright.x, topleft.y, bottomright.y)
+{}
 
 Rect Rect::FromCenter(const Vec2& center, float halfWidth, float halfHeight)
 {
