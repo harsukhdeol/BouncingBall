@@ -47,7 +47,19 @@ private:
 	Rect walls;
 	FrameTimer ft;
 	Graphics gfx;
-	Brick b;
+	static constexpr float brickWidth = 50.0f;
+	static constexpr float brickHeight = 30.0f;
+	static constexpr int brickRows = 10;
+	static constexpr int brickCols = 5;
+	static constexpr int nBricks = brickRows*brickCols;
+	Color colors[5] = {
+		{1,205,254},
+		{185,103,255},
+		{255,113,206},
+		{255,251,150},
+		{5,255,161}
+	};
+	Brick bricks[nBricks];
 	Ball ball;
 	Sound soundPad;
 	Sound soundBrick;

@@ -6,15 +6,19 @@ rect(rect), color(c)
 
 void Brick::Draw(Graphics& gfx) const
 {
+	if(!destroyed) {
+
 	gfx.DrawRect(rect, color);
+}
 }
 
 bool Brick::BallCollision(Ball& ball)
 {
-	if (rect.isOverlapping(ball.GetRect()))
+	if (!destroyed && rect.isOverlapping(ball.GetRect()))
 	{
 		ball.ReboundY();
 		destroyed = true;
+		return true;
 	}
-	return destroyed;
+	return false;
 }
