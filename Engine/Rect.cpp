@@ -22,3 +22,8 @@ bool Rect::isOverlapping(Rect& other) const
 {
 	return right>other.left&&left<other.right&&bottom>other.top&&top<other.bottom;
 }
+
+Rect Rect::GetExpanded(const float padding) const
+{
+	return Rect(left - padding, right + padding, top - padding, bottom + padding);
+}

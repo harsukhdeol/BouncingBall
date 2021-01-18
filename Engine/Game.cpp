@@ -33,13 +33,14 @@ Game::Game(MainWindow& wnd)
 	soundBrick(L"Sounds//arkBrick.wav"),
 	paddle(Vec2(0,550), 150.0f, 30.f)
 {
+	const Vec2 topLeft(20.f, 20.f);
 	int i = 0;
 	for (int y = 0; y < brickCols; y++) {
 		Color c = colors[y];
 		for (int x = 0; x < brickRows; x++)
 		{
 			Vec2 topRight(x *brickWidth, y * brickHeight);
-			bricks[i] = Brick(Rect(topRight, brickWidth, brickHeight), c);
+			bricks[i] = Brick(Rect(topLeft+topRight, brickWidth, brickHeight), c);
 			i++;
 		}
 	}
