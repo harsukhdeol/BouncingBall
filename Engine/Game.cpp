@@ -58,12 +58,35 @@ void Game::UpdateModel()
 	const float dt = ft.Mark();
 	ball.Update(dt);
 
-	for (Brick& b : bricks) {
-		if (b.BallCollision(ball))
+	bool collisionHappened = false;
+	float curDist; 
+	int curCollisionIndex;
+
+	for (int i = 0; i < nBricks; i++) {
+		if (bricks[i].CheckBallCollision(ball))
 		{
-			soundBrick.Play();
-			break;
+			const float newDist =Vec2( bricks[i].GetCenter() - ball.GetPos()).GetLengthSq();
+			if (collisionHappened)
+			{
+				if (curDist > newDist)
+				{
+					curDist = newDist;
+					curCollisionIndex = i;
+
+				}
+			}
+			else {
+				curDist = newDist;
+				curCollisionIndex = i;
+				collisionHappened = true;
+			}
 		}
+	}
+
+	if (collisionHappened)
+	{
+		bricks[curCollisionIndex].ExecuteBallCollision(ball);
+		soundBrick.Play();
 	}
 
 	ball.WallCollision(walls);

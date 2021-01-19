@@ -11,7 +11,7 @@ public:
 	bool BallCollision(Ball& ball) const;
 	void WallCollision(const Rect& wall);
 	Rect GetRect() const;
-
+	void ResetCooldown();
 private:
 	static constexpr float padding = 30.0f;
 	Vec2 pos;
@@ -20,5 +20,5 @@ private:
 	static constexpr float speed = 360.0f;
 	static constexpr Color c = { 200,255,115 };
 	static constexpr Color sideColor = { 255,255,255};
-	
+	bool isCooldown = false;
 };

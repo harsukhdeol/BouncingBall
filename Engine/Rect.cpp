@@ -27,3 +27,8 @@ Rect Rect::GetExpanded(const float padding) const
 {
 	return Rect(left - padding, right + padding, top - padding, bottom + padding);
 }
+
+Vec2 Rect::GetCenter() const
+{
+	return Vec2((right - left) / 2, (bottom - top) / 2);
+}

@@ -53,3 +53,8 @@ Rect Paddle::GetRect() const
 {
 	return Rect(pos, width, height);
 }
+
+void Paddle::ResetCooldown()
+{
+	isCooldown = false;
+}
